@@ -1,5 +1,6 @@
 /*Name this external file gallery.js*/
 
+var currentIndex = 0; // Track current index of preview images
 
 function upDate(previewPic){
  /* In this function you should 
@@ -12,6 +13,7 @@ function upDate(previewPic){
     var x=document.getElementById("image");
     x.innerHTML=previewPic.alt;
     x.style.backgroundImage="url('"+previewPic.src;
+    currentIndex = Array.from(document.getElementsByClassName("preview")).indexOf(previewPic); // Update current index
 	}
 
 	function unDo(){
@@ -24,18 +26,23 @@ function upDate(previewPic){
     */
 	var x=document.getElementById("image");
     x.innerHTML="Hover over an image below to display here.";
-    x.style.backgroundImage="url('";	
+    x.style.backgroundImage="url('";
+    currentIndex = 0;	
 	}
     
-
-        window.onload=function(){
-        addTabFocus();
-       }
-
-    function addTabFocus(){
-        console.log("Tab focus event triggered");
-        var previews=document.getElementsByClassName("preview");
-        for(var i=0;i<previews.length;i++){
-            previews[i].setAttribute("tabindex",i);
+    //Function to be called on page load
+    function onLoadFunction() {
+        console.log("Page loaded!");
+        addTabFocusAttribute();
+        addImageClockListeners();
+    }
+    
+    // Function to add tabindex attribute to images
+    function addTabFocusAttribute() {
+        var images = document.getElementsByClassName("preview");
+        for (var i = 0; i < images.length; i++) {
+            images[i].setAttribute("tabindex", i + 1);
         }
     }
+                
+    window.onload = onLoadFunction;
