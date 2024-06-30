@@ -1,3 +1,3 @@
 # Motivation
 To learn javascript by making a simple project which uses some basic features of javascript
-# Link: [click here] (UnknownUser130.github.io)
+[click here] (UnknownUser130.github.io)
